@@ -10,7 +10,12 @@ const routes : Routes = [
   { path: '', redirectTo: 'iJ2C', pathMatch: 'full'},
   { path: 'iJ2C', component: HomepageComponent },
   { path: 'iJ2C/pf-evo', component: PfEvoComponent},
-  { path: 'iJ2C/pf-evo/client', component: ClientComponent}
+  { path: 'iJ2C/pf-evo/client/applications', component: ClientComponent}
+  /*
+  { path: 'iJ2C/pf-evo/client', children:[
+      {path: '**', component: ClientComponent}
+    ]}
+  */
 ];
 
 @NgModule({

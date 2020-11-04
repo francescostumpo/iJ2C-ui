@@ -11,6 +11,7 @@ export class ClientService {
 
   private _clients: Array<Client>;
   private _clientSelectedId: string;
+  private _clientSelectedName: string;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -31,8 +32,26 @@ export class ClientService {
     this._clientSelectedId = value;
   }
 
+  get clientSelectedName(): string {
+    return this._clientSelectedName;
+  }
+
+  set clientSelectedName(value: string) {
+    this._clientSelectedName = value;
+  }
+
   getClients() : Observable<HttpResponse<Object>>{
     return this.httpClient
       .get<Array<Client>>(environment.pfEvolutionHost + "/api/clients/getAllClients", {observe: 'response'})
+  }
+
+  getClientById(clientId : string) : Observable<HttpResponse<Object>> {
+    return this.httpClient
+      .get<Array<Client>>(environment.pfEvolutionHost + "/api/clients/getClientById/" + clientId, {observe: 'response'})
+  }
+
+  createClient(client) : Observable<HttpResponse<Object>> {
+    return this.httpClient
+      .post(environment.pfEvolutionHost + "/api/clients/insertClient", client, {observe: 'response'});
   }
 }

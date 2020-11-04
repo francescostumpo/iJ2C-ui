@@ -11,6 +11,7 @@ import {AppRoutingModule} from './app-routing/app-routing.module';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { PfEvoComponent } from './components/pf-evo/pf-evo.component';
 import { ClientComponent } from './components/pf-evo/client/client.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ClientComponent } from './components/pf-evo/client/client.component';
     NgbModule,
     FormsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

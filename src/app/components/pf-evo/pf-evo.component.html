@@ -1,2 +1,64 @@
-<p>Pathfinder evolution</p>
-<router-outlet></router-outlet>
+<div class="col-lg-12 col-md-12 col-sm-12">
+  <div class="d-flex">
+    <div class="">
+      <h3 style="font-weight: bold">Pathfinder Evolution</h3>
+    </div>
+    <div class="ml-auto">
+      <button ngbButton class="btn btn-outline-info" (click)="openModal(content)">Create New Client</button>
+    </div>
+  </div>
+  <hr>
+  <div class="card">
+    <div class="card-body">
+        <h4>Client list</h4>
+        <hr>
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th></th>
+            <th>clientName</th>
+            <th>clientReferent</th>
+            <th>clientReferentEmail</th>
+            <th>industry</th>
+            <th></th>
+          </tr>
+          </thead>
+        <tbody>
+        <tr *ngFor="let client of clientsList; index as i">
+            <td>{{i}}</td>
+            <td>{{client.clientName}}</td>
+            <td>{{client.clientReferent}}</td>
+            <td>{{client.clientReferentEmail}}</td>
+            <td>{{client.industry}}</td>
+            <td class="text-center"><span style="cursor: pointer" (click)="goToClientView(client)"><fa-icon [icon]="faExternalLink"></fa-icon></span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create a new client to assess</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <p class="col-form-label">Client Name</p>
+      <input class="form-control" id="clientName" type="text" [(ngModel)]="client.clientName" required="true">
+      <p class="col-form-label">Client Referent</p>
+      <input class="form-control" type="text" [(ngModel)]="client.clientReferent">
+      <p class="col-form-label">Client Referent Email</p>
+      <input class="form-control" type="email" [(ngModel)]="client.clientReferentEmail">
+      <p class="col-form-label">Industry</p>
+      <input class="form-control" type="text" [(ngModel)]="client.industry">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-info" (click)="c(createClientOnMongo(client))">Save</button>
+  </div>
+</ng-template>
+
+
+

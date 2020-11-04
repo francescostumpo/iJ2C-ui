@@ -1,1 +1,44 @@
-<p>client works!</p>
+<div class="col-lg-12 col-md-12 col-sm-12">
+  <div class="d-flex">
+    <div class="">
+      <h3 style="font-weight: bold">{{clientName}} > Applications</h3>
+    </div>
+    <div class="ml-auto">
+      <button ngbButton class="btn btn-outline-info" >Create new Application</button>
+    </div>
+  </div>
+  <hr>
+  <div class="card">
+    <div class="card-body">
+      <h4>Application list</h4>
+      <hr>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th></th>
+          <th>applicationDomain</th>
+          <th>applicationName</th>
+          <th>applicationReferent</th>
+          <th>applicationReferentEmail</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let application of applicationList; index as i">
+          <td>{{i}}</td>
+          <td>{{application.applicationDomain}}</td>
+          <td>{{application.applicationName}}</td>
+          <td>{{application.applicationReferent}}</td>
+          <td>{{application.applicationReferentEmail}}</td>
+          <td class="text-center"><span style="cursor: pointer" (click)="goToApplicationView(application)"><fa-icon [icon]="faExternalLink"></fa-icon></span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
