@@ -1,18 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">iJ2C</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="d-none d-md-block">
+    <img routerLink="/iJ2C" src="assets/img/flaticon_neural.svg"
+         width="8%" style="cursor: pointer;"><span class="align-middle" style="color: white; letter-spacing: 0.2px; font-weight: bold; font-size: 22px">&nbsp; iJ2C [Platform]</span>
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="navbar-nav ml-auto" id="navbarSupportedContent">
     <ul ngbNav class="mr-auto">
       <li ngbNavItem>
-        <a ngbNavLink routerLink="/iJ2C" routerLinkActive="active" style="color: white">Home <span class="sr-only">(current)</span></a>
+        <a ngbNavLink routerLink="/iJ2C" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact: true}" style="color: white">Homepage<span class="sr-only">(current)</span></a>
       </li>
       <li ngbNavItem>
-        <a ngbNavLink routerLink="/iJ2C/pf-evo" routerLinkActive="active" style="color: white">PF-Evolution</a>
+        <a ngbNavLink routerLink="/iJ2C/pf-ext" routerLinkActive="link-active" class="disabled" disabled="">Portfolio Extractor</a>
       </li>
-      <li ngbNavItem ngbDropdown style="cursor: pointer">
+      <li ngbNavItem>
+        <a ngbNavLink routerLink="/iJ2C/pf-evo" routerLinkActive="link-active" style="color: white">Pathfinder Evolution</a>
+      </li>
+      <!--<li ngbNavItem ngbDropdown style="cursor: pointer">
         <a class="dropdown-toggle" id="navbarDropdown" ngbNavLink ngbDropdownToggle style="color: white">
           Dropdown
         </a>
@@ -22,14 +28,15 @@
           <div class="dropdown-divider"></div>
           <a ngbDropdownItem href="#">Something else here</a>
         </div>
-      </li>
+      </li>-->
       <li ngbNavItem>
-        <a ngbNavLink class="disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a ngbNavLink routerLink="/iJ2C/mg-des" routerLinkActive="link-active" class="disabled" disabled="">Migration Designer</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <!--<form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button ngbButton class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form>-->
+
   </div>
 </nav>

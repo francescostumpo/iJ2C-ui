@@ -1,43 +1,71 @@
-<div class="col-lg-12 col-md-12 col-sm-12">
-  <div class="d-flex">
-    <div class="">
-      <h3 style="font-weight: bold">{{clientName}} > Applications</h3>
+<div class="container-fluid mt-4">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="">
+            <h5 class="mt-1" style="font-weight: bold"><img src="assets/img/flaticon_compass.svg" style="width: 5%; cursor: pointer" routerLink="/iJ2C/pf-evo">&nbsp; {{clientName}}</h5>
+          </div>
+          <div class="ml-auto mt-1">
+            <button ngbButton class="btn btn-outline-info" (click)="openModal(content)">Create new Application</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="ml-auto">
-      <button ngbButton class="btn btn-outline-info" >Create new Application</button>
-    </div>
-  </div>
-  <hr>
-  <div class="card">
-    <div class="card-body">
-      <h4>Application list</h4>
-      <hr>
-      <table class="table table-bordered">
-        <thead>
-        <tr>
-          <th></th>
-          <th>applicationDomain</th>
-          <th>applicationName</th>
-          <th>applicationReferent</th>
-          <th>applicationReferentEmail</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let application of applicationList; index as i">
-          <td>{{i}}</td>
-          <td>{{application.applicationDomain}}</td>
-          <td>{{application.applicationName}}</td>
-          <td>{{application.applicationReferent}}</td>
-          <td>{{application.applicationReferentEmail}}</td>
-          <td class="text-center"><span style="cursor: pointer" (click)="goToApplicationView(application)"><fa-icon [icon]="faExternalLink"></fa-icon></span></td>
-        </tr>
-        </tbody>
-      </table>
+
+    <hr>
+    <div class="card">
+      <div class="card-body">
+        <h4>Application list</h4>
+        <hr>
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th></th>
+            <th>applicationDomain</th>
+            <th>applicationName</th>
+            <th>applicationReferent</th>
+            <th>applicationReferentEmail</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let application of applicationList; index as i">
+            <td>{{i}}</td>
+            <td>{{application.applicationDomain}}</td>
+            <td>{{application.applicationName}}</td>
+            <td>{{application.applicationReferent}}</td>
+            <td>{{application.applicationReferentEmail}}</td>
+            <td class="text-center"><span style="cursor: pointer" (click)="goToApplicationView(application)"><fa-icon [icon]="faExternalLink"></fa-icon></span></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
 
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create a New Application</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p class="col-form-label">Application Name</p>
+    <input class="form-control" type="text" [(ngModel)]="application.applicationName" required="true">
+    <p class="col-form-label">Application Domain</p>
+    <input class="form-control" type="text" [(ngModel)]="application.applicationDomain">
+    <p class="col-form-label">Application Referent</p>
+    <input class="form-control" type="text" [(ngModel)]="application.applicationReferent">
+    <p class="col-form-label">Application Referent Email</p>
+    <input class="form-control" type="text" [(ngModel)]="application.applicationReferentEmail">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-info" (click)="c(createApplicationOnMongo(application))">Save</button>
+  </div>
+</ng-template>
 
 
 

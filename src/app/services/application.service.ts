@@ -27,4 +27,9 @@ export class ApplicationService {
     return this.httpClient
       .get<Array<Client>>(environment.pfEvolutionHost + "/api/applications/getApplicationsByClientId/" + applicationId, {observe: 'response'})
   }
+
+  createApplication(application) : Observable<HttpResponse<Object>>{
+    return this.httpClient
+      .post(environment.pfEvolutionHost + "/api/applications/insertApplication", application, {observe: 'response'});
+  }
 }

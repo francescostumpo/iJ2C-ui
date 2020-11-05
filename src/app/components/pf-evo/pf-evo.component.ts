@@ -48,7 +48,7 @@ export class PfEvoComponent implements OnInit {
   goToClientView(client: Client) {
       this.clientService.clientSelectedId = client.id;
       this.clientService.clientSelectedName = client.clientName;
-      this.router.navigate(['client/applications'], {relativeTo: this.route} );
+      this.router.navigate(['client'], {relativeTo: this.route} );
   }
 
   openModal(content) {
