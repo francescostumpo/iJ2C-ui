@@ -3,9 +3,7 @@
     <div class="card">
       <div class="card-body">
         <div class="d-flex">
-          <div class="">
-            <h5 class="mt-1" style="font-weight: bold"><img src="assets/img/flaticon_compass.svg" style="width: 5%; cursor: pointer" routerLink="/iJ2C/pf-evo">&nbsp; {{clientName}}</h5>
-          </div>
+          <h5 class="mt-1" style="font-weight: bold"><img src="assets/img/flaticon_compass.svg" style="width: 5%; cursor: pointer" routerLink="/iJ2C/pf-evo">&nbsp; <span routerLink="/iJ2C/pf-evo/client" routerLinkActive="breadcrumb-active" [routerLinkActiveOptions]="{exact: true}">{{clientName}}</span></h5>
           <div class="ml-auto mt-1">
             <button ngbButton class="btn btn-outline-info" (click)="openModal(content)">Create new Application</button>
           </div>
@@ -22,8 +20,8 @@
           <thead>
           <tr>
             <th></th>
-            <th>applicationDomain</th>
             <th>applicationName</th>
+            <th>applicationDomain</th>
             <th>applicationReferent</th>
             <th>applicationReferentEmail</th>
             <th></th>
@@ -32,8 +30,8 @@
           <tbody>
           <tr *ngFor="let application of applicationList; index as i">
             <td>{{i}}</td>
-            <td>{{application.applicationDomain}}</td>
             <td>{{application.applicationName}}</td>
+            <td>{{application.applicationDomain}}</td>
             <td>{{application.applicationReferent}}</td>
             <td>{{application.applicationReferentEmail}}</td>
             <td class="text-center"><span style="cursor: pointer" (click)="goToApplicationView(application)"><fa-icon [icon]="faExternalLink"></fa-icon></span></td>

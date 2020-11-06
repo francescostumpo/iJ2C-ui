@@ -11,8 +11,12 @@ import {environment} from '../../environments/environment';
 export class ApplicationService {
 
   private _applicationList: Array<Application>;
+  private clientName: string;
+  private _applicationSelectedId: string;
+  private _applicationSelectedName: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
 
   get applicationList(): Array<Application> {
@@ -23,13 +27,33 @@ export class ApplicationService {
     this._applicationList = value;
   }
 
+
+  get applicationSelectedId(): string {
+    return this._applicationSelectedId;
+  }
+
+  set applicationSelectedId(value: string) {
+    this._applicationSelectedId = value;
+  }
+
+  get applicationSelectedName(): string {
+    return this._applicationSelectedName;
+  }
+
+  set applicationSelectedName(value: string) {
+    this._applicationSelectedName = value;
+  }
+
+
+
   getApplications(applicationId) : Observable<HttpResponse<Object>>{
     return this.httpClient
-      .get<Array<Client>>(environment.pfEvolutionHost + "/api/applications/getApplicationsByClientId/" + applicationId, {observe: 'response'})
+      .get<Array<Application>>(environment.pfEvolutionHost + "/api/applications/getApplicationsByClientId/" + applicationId, {observe: 'response'})
   }
 
   createApplication(application) : Observable<HttpResponse<Object>>{
     return this.httpClient
       .post(environment.pfEvolutionHost + "/api/applications/insertApplication", application, {observe: 'response'});
   }
+
 }

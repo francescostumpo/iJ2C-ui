@@ -1,0 +1,24 @@
+<div class="container-fluid mt-4">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex">
+          <h5 class="mt-1"><img src="assets/img/flaticon_compass.svg" style="width: 5%; cursor: pointer" routerLink="/iJ2C/pf-evo">&nbsp; <span style="cursor: pointer" routerLink="/iJ2C/pf-evo/client" routerLinkActive="breadcrumb-active" [routerLinkActiveOptions]="{exact: true}">{{clientName}}</span> \ <span routerLink="/iJ2C/pf-evo/client/application" routerLinkActive="breadcrumb-active" [routerLinkActiveOptions]="{exact: true}">{{applicationName}}</span></h5>
+          <div class="ml-auto mt-2">
+            <h6>Strategy: <span style="font-size: 20px">{{resultClause}}</span> | Result value: <span style="font-size: 20px">{{resultValue}}</span></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="card mb-3" *ngFor="let question of questionList">
+      <div class="card-body">
+        <h5>{{question.questionSequence + 1}}) {{question.questionClause}}</h5>
+        <select class="form-control" [ngModel]="getAnswerValue(question)" (change)="handleChange($event, question.id)">
+          <option *ngFor="let option of question.options" value="{{option.optionValue}}">{{option.optionClause}}</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-outline-info" type="button" (click)="submitQuestionnaireOnMongo()">Submit questionnaire</button>
+  </div>
+</div>

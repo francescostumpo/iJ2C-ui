@@ -4,6 +4,8 @@ import {ApplicationService} from '../../../services/application.service';
 import {faExternalLinkAlt} from '@fortawesome/free-solid-svg-icons';
 import {Application} from '../../../models/application';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ActivatedRoute, Router} from '@angular/router';
+import {QuestionnaireService} from '../../../services/questionnaire.service';
 
 @Component({
   selector: 'app-client',
@@ -16,7 +18,7 @@ export class ClientComponent implements OnInit {
   clientName : string = this.clientService.clientSelectedName;
   private application : Application;
 
-  constructor(private clientService: ClientService, private applicationService: ApplicationService, private modalService: NgbModal) {
+  constructor(private clientService: ClientService, private applicationService: ApplicationService, private router: Router, private route: ActivatedRoute, private modalService: NgbModal, private questionnaireService: QuestionnaireService) {
     this.application = new Application();
   }
 
@@ -31,7 +33,10 @@ export class ClientComponent implements OnInit {
     })
   }
 
-  goToApplicationView(application: any) {
+  goToApplicationView(application: Application) {
+    this.applicationService.applicationSelectedId = application.id;
+    this.applicationService.applicationSelectedName = application.applicationName;
+    this.router.navigate(['application'], {relativeTo: this.route} );
 
   }
 

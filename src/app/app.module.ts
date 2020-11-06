@@ -12,6 +12,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { PfEvoComponent } from './components/pf-evo/pf-evo.component';
 import { ClientComponent } from './components/pf-evo/client/client.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {ApplicationComponent} from './components/pf-evo/application/application.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NavbarComponent,
     HomepageComponent,
     PfEvoComponent,
-    ClientComponent
+    ClientComponent,
+    ApplicationComponent
   ],
   imports: [
     BrowserModule,
